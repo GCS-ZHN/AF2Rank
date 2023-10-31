@@ -1,0 +1,3 @@
+[submodule "protools"]
+	path = protools
+	url = https://github.com/GCS-ZHN/protools.git

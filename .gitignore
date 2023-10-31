@@ -1,2 +1,11 @@
 
 .DS_Store
+.conda/
+__pycache__/
+*.py[cod]
+
+params
+logs/
+
+*.zip
+*.pdb
