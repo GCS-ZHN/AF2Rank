@@ -57,11 +57,11 @@ class af2rank:
 
     def reset(self):
         self.model = mk_af_model(protocol="fixbb",
-                                                         use_templates=True,
-                                                         use_multimer=self.args["use_multimer"],
-                                                         debug=False,
-                                                         model_names=self.args["model_names"],
-                                                         data_dir=self.args["model_dir"])
+                                use_templates=True,
+                                use_multimer=self.args["use_multimer"],
+                                debug=False,
+                                model_names=self.args["model_names"],
+                                data_dir=self.args["model_dir"])
 
         self.model.prep_inputs(self.args["pdb"], chain=self.args["chain"])
         self.model.set_seq(mode="wildtype")
@@ -162,7 +162,7 @@ def rank_structure(
         save_pdb: bool = True,
         **kwargs) -> pd.DataFrame:
         scores = []
-        for decoy_pdb in os.listdir(decoys_dir):
+        for decoy_pdb in filter(lambda x: x.endswith(".pdb"), os.listdir(decoys_dir)):
             input_pdb = os.path.join(decoys_dir, decoy_pdb)
             if save_pdb:
                 os.makedirs(f"{decoys_dir}_output", exist_ok=True)
